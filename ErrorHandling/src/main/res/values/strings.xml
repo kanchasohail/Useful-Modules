@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="the_request_timed_out">Request Time Out\n</string>
+    <string name="youve_hit_your_rate_limit">Too Many Requests\n</string>
+    <string name="server_error">Server Error\n\n</string>
+    <string name="error_disk_full">\nDisk Full</string>
+</resources>
