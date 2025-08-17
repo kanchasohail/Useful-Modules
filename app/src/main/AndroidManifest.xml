@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UsefulModules"
         tools:targetApi="31">
+
+        <!-- for showing ads -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8168519756955207~5601393966" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

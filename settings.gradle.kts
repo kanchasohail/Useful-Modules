@@ -23,3 +23,5 @@ rootProject.name = "Useful Modules"
 include(":app")
 include(":ErrorHandling")
 include(":ConnectivityObserver")
+include(":AdmobIntegration")
+include(":ChatBot")

@@ -10,6 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AdmobIntegration" />
             <option value="$PROJECT_DIR$/ConnectivityObserver" />
             <option value="$PROJECT_DIR$/ErrorHandling" />
             <option value="$PROJECT_DIR$/app" />

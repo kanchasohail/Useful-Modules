@@ -1,21 +1,28 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.devtools.ksp)
 }
 
 android {
-    namespace = "com.sohail.usefulmodules"
-    compileSdk = libs.versions.compileSdk.get().toInt()
+    namespace = "com.example.chatbot"
+    compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.sohail.usefulmodules"
-        minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = 24
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+
+        // Access the key from local.properties
+        val localPropertiesFile = rootProject.file("local.properties")
+        val properties = Properties()
+        properties.load(FileInputStream(localPropertiesFile))
+        buildConfigField("String", "GEMINI_API_KEY", properties.getProperty("GEMINI_API_KEY"))
     }
 
     buildTypes {
@@ -36,6 +43,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -57,11 +65,11 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation(project(":ErrorHandling"))
-    implementation(project(":ConnectivityObserver"))
-    implementation(project(":AdmobIntegration"))
-    implementation(project(":ChatBot"))
-
-    // View Model
+    // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.androidx.material3.adaptive.navigation.suite)
 }

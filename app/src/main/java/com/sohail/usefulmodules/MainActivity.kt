@@ -1,5 +1,6 @@
 package com.sohail.usefulmodules
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.admobintegration.AdMobImpl
 import com.sohail.usefulmodules.ui.theme.UsefulModulesTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,6 +31,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+private fun initialiseAds(context: Context) {
+//Initialize the interstitial ad only if the user is not using premium version
+    AdMobImpl.initialiseAds(context)
+    AdMobImpl.loadInterstitialAd(context)
+}
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
